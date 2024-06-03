@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es-419">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Inicio de Sesión | Dietética PURA</title>
+    <meta
+      name="description"
+      content="Codo a Codo 4.0 - Curso de PHP - Full Stack - Comisión 24143 - Trabajo Práctico Final - Página de la dietética Pura." />
+    <meta name="author" content="Grupo 1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../css/estilos.css" />
+
+    <meta
+      name="theme-color"
+      content="#96734F"
+      media="(prefers-color-scheme: light)" />
+    <meta
+      name="theme-color"
+      content="#3D2D22"
+      media="(prefers-color-scheme: dark)" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="icon" sizes="192x192" href="../android-chrome-192x192.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon-16x16.png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <script
+      src="https://kit.fontawesome.com/0b53f15498.js"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navegacion">
+        <a class="anclaLogo" href="../index.html">
+          <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+          <span>PURA</span>
+        </a>
+        <ul class="listaNav">
+          <li class="listaItem">
+            <a class="linkNav" href="../index.html#tendencias">Destacados</a>
+          </li>
+          <li class="listaItem">
+            <a class="linkNav" href="../pages/registrarse.html">Registrarse</a>
+          </li>
+          <li class="listaItem">
+            <a class="linkNav iniciarSesion" href="../pages/iniciosesion.html"
+              >Iniciar Sesión</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="mainIngreso">
+      <section class="seccionLogin">
+        <form id="loginForm" action="" method="get" name="login">
+          <h2>¡Hola de nuevo!</h2>
+          <fieldset>
+            <legend>Ingresá tus datos</legend>
+            <div>
+              <input
+                type="email"
+                placeholder="Tu e-mail de registro"
+                id="email"
+                name="email"
+                class="form-control" />
+              <div id="emailError" class="mensaje-error"></div>
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Tu contraseña"
+                id="password"
+                name="password"
+                class="form-control" />
+              <div id="passwordError" class="mensaje-error"></div>
+            </div>
+            <div class="botonLogin">
+              <input class="login" type="submit" value="Iniciar Sesión" />
+            </div>
+            <div id="ayuda" class="ayuda">
+              <a href="registrarse.html">Registrate acá</a>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Hecha con <i class="fa-solid fa-brain"></i> y
+        <i class="fa-solid fa-heart"></i> por Grupo 1.
+      </p>
+      <nav>
+        <ul>
+          <li><a href="">Quiénes somos</a></li>
+          <li><a href="">Preguntas frecuentes</a></li>
+          <li><a href="">Ayuda</a></li>
+          <li><a href="">Administrador Página</a></li>
+        </ul>
+      </nav>
+      <a href="#main" class="flechaArriba" title="Volver al inicio">
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </footer>
+    <script src="../js/validacion-iniciosesion.js"></script>
+  </body>
+</html>

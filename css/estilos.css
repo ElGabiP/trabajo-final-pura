@@ -1,0 +1,1165 @@
+@import url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
+
+:root {
+  color-scheme: normal;
+
+  scroll-behavior: smooth;
+
+  /* colores */
+  --color-primario: #96734f;
+  --color-secundario: #4f5345;
+  --color-primario-claro: #6b4626;
+  --color-primario-oscuro: #6b4626;
+  --color-texto: #3d2d22;
+  --color-fondo: #ebcea2;
+  --color-acento: #be5252;
+  --color-sombra: rgba(0, 0, 0, 0.3);
+
+  /* familias de fuentes */
+  --fuente-base: "Raleway", sans-serif;
+  --fuente-acento: "Raleway", sans-serif;
+
+  /* pesos de fuentes */
+  --extra-light: 200;
+  --light: 300;
+  --regular: 500;
+  --bold: 700;
+  --black: 800;
+
+  /* tamaños de fuentes */
+  --small: 0.8rem;
+  --normal: 1.1rem;
+  --large: 1.375rem;
+  --xl: 1.75rem;
+  --xxl: 2.25rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fuente-base);
+  font-optical-sizing: auto;
+  font-style: normal;
+  scrollbar-color: var(--color-primario) var(--color-fondo);
+  scrollbar-width: thin;
+
+  ::selection {
+    background: #6b462699;
+  }
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+/*Estilos para CABECERA*/
+
+.header {
+  background-color: var(--color-primario);
+  color: var(--color-texto);
+  height: 90px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  .navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+    margin-left: 30px;
+    background-color: var(--color-primario);
+    .anclaLogo {
+      text-decoration: none;
+      color: var(--color-texto);
+      font-size: var(--xl);
+      transition: all 0.2s ease;
+      &:hover {
+        transform: scale(1.02);
+        text-shadow: 0 0 10px var(--color-sombra);
+      }
+      span {
+        font-family: var(--fuente-acento);
+        font-weight: var(--bold);
+      }
+    }
+    .listaNav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      flex-grow: 0;
+      flex-shrink: 0;
+      .listaItem {
+        margin-right: 30px;
+        .linkNav {
+          text-decoration: none;
+          color: var(--color-texto);
+          font-weight: var(--black);
+          font-size: var(--normal);
+          padding: 0.5rem 1rem;
+          &:hover,
+          &:focus {
+            box-shadow: 0 0 10px var(--color-sombra);
+            border-radius: 0.5rem;
+          }
+        }
+        .linkNav.iniciarSesion {
+          background-color: var(--color-fondo);
+          border-radius: 0.5rem;
+          transition: box-shadow 0.4s;
+          &:hover,
+          &:focus {
+            background-color: var(--color-acento);
+          }
+        }
+      }
+    }
+  }
+}
+
+/*Diseño responsivo para tablets y celulares*/
+
+@media only screen and (max-width: 768px) {
+  .header {
+    height: initial;
+    padding-bottom: 4%;
+    .navegacion {
+      margin: auto;
+      flex-direction: column;
+      .anclaLogo {
+        font-size: var(--xxl);
+      }
+      .listaNav {
+        position: fixed;
+        bottom: 0;
+        min-height: calc(8vmax + 5px);
+        min-width: 100vw;
+        background-color: var(--color-primario);
+        box-shadow: 0 0 10px var(--color-sombra);
+
+        border-radius: 30px 30px 0 0;
+        justify-content: center;
+
+        .listaItem {
+          flex-shrink: 1;
+          margin: 0 auto;
+          flex-basis: 10ch;
+          .linkNav {
+            font-weight: var(--regular);
+            margin-right: initial;
+            font-size: var(--small);
+            padding: 0.35rem 0.5rem;
+            &:hover,
+            &:focus {
+              box-shadow: 0 0 10px var(--color-sombra);
+              border-radius: 0.35rem;
+            }
+          }
+
+          .linkNav.iniciarSesion {
+            border-radius: 0.35rem;
+          }
+        }
+        .listaItem:last-child {
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+
+/*Estilos para página PRINCIPAL*/
+
+.main {
+  .seccionPrincipal {
+    background: linear-gradient(
+        to bottom,
+        var(--color-primario),
+        15%,
+        #ebcea201,
+        90%,
+        var(--color-fondo)
+      ),
+      url(../assets/img/bg-image-main.png);
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 50svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .tituloPrincipal {
+      font-size: var(--xxl);
+      font-family: var(--fuente-base);
+      font-weight: var(--bold);
+      letter-spacing: 0.07em;
+      word-spacing: 0.1em;
+      max-width: 15ch;
+      margin-block: var(--xxl) var(--normal);
+    }
+    .subtituloPrincipal {
+      font-size: var(--large);
+      font-weight: var(--black);
+      font-style: italic;
+      margin-bottom: 25px;
+    }
+  }
+
+  .buscadorPrincipal {
+    background-color: var(--color-principal);
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 45px;
+
+    .tituloSeccion {
+      font-size: var(--xl);
+      font-weight: var(--bold);
+    }
+    .buscadorProductos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: var(--small);
+      flex-wrap: wrap;
+      max-width: 90%;
+      .inputBuscador {
+        border: 1px solid white;
+        border-radius: var(--normal);
+        font-size: var(--normal);
+        font-style: italic;
+        font-feature-settings: "ital";
+        height: 50px;
+        margin: 10px auto;
+        outline: none;
+        padding: 0px 20px;
+        min-width: 55vw;
+        max-width: 80vw;
+
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 10px var(--color-secundario);
+        }
+      }
+
+      .seleccionProducto {
+        border: 1px solid white;
+        border-radius: var(--normal);
+        font-size: var(--normal);
+        font-feature-settings: "ital";
+        height: 50px;
+        margin: 10px 10px;
+        outline: none;
+        padding: 0px 20px;
+        min-width: 15vw;
+        max-width: 13ch;
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 10px var(--color-secundario);
+        }
+      }
+
+      .botonBuscador {
+        background-color: var(--color-acento);
+        display: inline-block;
+        color: var(--color-texto);
+        height: 50px;
+        margin: 0px 5px;
+        padding: 0 20px;
+        border-radius: var(--normal);
+        font-size: var(--normal);
+        font-weight: var(--bold);
+        border: 2px solid white;
+        text-align: center;
+
+        transition: transform 0.3s, box-shadow 0.3s;
+        &:hover,
+        &:focus {
+          background-color: var(--color-acento);
+          transform: scale(0.95);
+          box-shadow: 0 0 10px var(--color-secundario);
+        }
+      }
+    }
+  }
+
+  .seccionTendencias {
+    width: 90%;
+    margin: 0 auto;
+
+    .tituloSeccion {
+      font-size: var(--xl);
+      font-weight: var(--bold);
+      text-align: center;
+      margin-bottom: var(--normal);
+    }
+
+    .contenedorProductos {
+      min-height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: var(--small);
+      margin-bottom: 60px;
+
+      .productoDestacado {
+        min-width: 75%;
+        height: 65vh;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: var(--small);
+        }
+        transition: all 0.3s ease;
+        &:hover,
+        &:focus {
+          transform: scale(1.02);
+          box-shadow: 0 0 10px var(--color-secundario);
+          border-radius: var(--small);
+        }
+      }
+    }
+
+    .contenedorRecomendaciones {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+      min-height: 45vh;
+
+      .productoRecomendado {
+        width: 210px;
+        height: 290px;
+        position: relative;
+
+        a {
+          text-decoration: none;
+          color: var(--color-texto);
+        }
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: var(--small);
+        }
+
+        .nombreProducto {
+          position: absolute;
+          z-index: 2;
+          text-align: center;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: var(--small);
+          opacity: 0;
+          backdrop-filter: blur(7px) brightness(80%);
+          transition: all 0.75s ease;
+
+          h3 {
+            font-size: var(--large);
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--color-fondo);
+          }
+          &:hover,
+          &:focus {
+            opacity: 1;
+            padding-top: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*Diseño responsivo para tablets y celulares*/
+
+@media only screen and (max-width: 768px) {
+  .main {
+    .seccionPrincipal {
+      height: calc(36vh + 12px);
+
+      .tituloPrincipal {
+        font-size: var(--xl);
+      }
+      .subtituloPrincipal {
+        font-size: var(--normal);
+        margin: auto 10px;
+      }
+    }
+    .buscadorPrincipal {
+      min-height: 25dvh;
+      .tituloSection {
+        font-size: var(--large);
+      }
+      .buscadorProductos {
+        width: 90vw;
+
+        .inputBuscador .seleccionProducto {
+          font-size: var(--normal);
+          height: 40px;
+
+          .botonBuscador {
+            height: 40px;
+            padding: 0 15px;
+            font-size: var(--normal);
+          }
+        }
+      }
+    }
+
+    .seccionTendencias {
+      .contenedorProductos {
+        min-height: 60vmin;
+        .productoDestacado {
+          min-width: 90%;
+          min-height: 55vmin;
+        }
+      }
+
+      .tituloSeccion {
+        font-size: var(--large);
+        margin: var(--small);
+      }
+    }
+  }
+}
+
+/*Estilos para FOOTER*/
+
+.footer {
+  background-color: var(--color-primario);
+  margin-top: 30px;
+  padding-top: var(--large);
+  padding-bottom: 1vh;
+
+  p {
+    text-align: center;
+    font-size: var(--large);
+    font-weight: var(--extra-light);
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      margin: 20px 3ch;
+      a {
+        text-decoration: none;
+        color: var(--color-texto);
+        font-size: var(--normal);
+        font-weight: var(--regular);
+      }
+      &:last-child {
+        padding: 0.5rem var(--normal);
+
+        border-radius: 0.5rem;
+        background-color: var(--color-fondo);
+        border-radius: 0.5rem;
+
+        transition: all 0.4s;
+        &:hover,
+        &:focus {
+          background-color: var(--color-acento);
+          box-shadow: 0 0 10px var(--color-sombra);
+        }
+      }
+    }
+  }
+  .flechaArriba {
+    font-size: var(--xl);
+    color: var(--color-texto);
+    position: fixed;
+    text-align: center;
+    width: var(--xxl);
+    height: var(--xxl);
+    bottom: 9vh;
+    right: 4vw;
+    transition: all 0.5s ease;
+    &:hover,
+    &:focus {
+      transform: scale(1.3);
+      box-shadow: 0 0 10px var(--color-secundario), 0 0 10px var(--color-sombra);
+      border-radius: 50%;
+    }
+    /*Hacer aparecer la flecha al hacer scroll*/
+    animation: aparecer auto ease-in;
+    animation-timeline: scroll(root block);
+  }
+}
+/*Definición animación para hacer aparecer un elemento*/
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/*Diseño responsivo para tablets y celulares*/
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding-bottom: 12vh;
+    padding-top: var(--normal);
+    p {
+      font-size: var(--normal);
+      margin-bottom: var(--normal);
+    }
+
+    ul {
+      flex-direction: column;
+      row-gap: var(--small);
+      li {
+        margin: 0 auto;
+        a {
+          font-size: var(--small);
+        }
+        &:last-child {
+          padding: var(--small) 0.5rem;
+          border-radius: 0.35rem;
+        }
+      }
+    }
+  }
+}
+
+/*Estilos para páginas DETALLE*/
+
+.mainDetalle {
+  h1 {
+    font-size: var(--xxl);
+    font-weight: var(--black);
+  }
+
+  h2 {
+    font-size: var(--xl);
+    font-weight: var(--bold);
+    margin-top: var(--xl);
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: var(--large);
+    font-weight: var(--bold);
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: var(--normal);
+    font-weight: var(--regular);
+    font-feature-settings: "ital";
+
+    span {
+      font-weight: var(--light);
+      font-style: italic;
+      font-feature-settings: "ital";
+      background-color: var(--color-acento);
+      padding: 2px 1ch;
+    }
+  }
+
+  caption,
+  th {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .detalle {
+    padding-top: 60px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-primario),
+      30%,
+      var(--color-fondo)
+    );
+    min-height: 70vh;
+    .contenedorDetalle {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 60px;
+
+      .textoDetalle {
+        flex: 1;
+      }
+
+      .imgDetalle {
+        img {
+          height: 300px;
+          width: 100%;
+          object-fit: cover;
+          border-radius: var(--small);
+          box-shadow: 0 0 10px var(--color-sombra);
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  .infoAdicional {
+    margin: 30px auto 60px;
+    min-height: 50vh;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    column-gap: 40px;
+
+    .contenedorBeneficios,
+    .contenedorInfo {
+      flex-shrink: 0;
+      flex-basis: 18ch;
+      flex-grow: 1;
+
+      table {
+        width: 100%;
+
+        tr {
+          td {
+            font-size: var(--normal);
+            padding: 5px 0px;
+          }
+
+          &:hover,
+          &:focus {
+            background: #96734f7a;
+          }
+        }
+      }
+    }
+
+    .contenedorReceta {
+      flex-grow: 2;
+    }
+  }
+}
+
+/*Diseño responsivo para tablets y celulares - Detalle*/
+
+@media only screen and (max-width: 768px) {
+  .mainDetalle {
+    h1 {
+      font-size: var(--xl);
+    }
+
+    h2 {
+      font-size: var(--large);
+      margin-top: var(--large);
+    }
+
+    h3 {
+      font-size: var(--normal);
+    }
+
+    p {
+      font-size: var(--small);
+      span {
+        display: inline-block;
+        padding: 2px;
+      }
+    }
+
+    caption,
+    th {
+      margin-bottom: 5px;
+    }
+
+    .detalle {
+      .contenedorDetalle {
+        flex-flow: column;
+        gap: 15px;
+
+        .imgDetalle {
+          img {
+            max-height: 50vh;
+          }
+        }
+      }
+    }
+
+    .infoAdicional {
+      margin: 45px auto;
+      flex-flow: column;
+      gap: 30px;
+      justify-content: center;
+      align-items: start;
+
+      .contenedorBeneficios,
+      .contenedorInfo {
+        flex-shrink: 0;
+        flex-basis: 12svh;
+        flex-grow: 1;
+
+        table {
+          font-size: var(--small);
+
+          tr {
+            td {
+              font-size: var(--small);
+              padding: 3px 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .contenedorReceta {
+      order: -1;
+      iframe {
+        width: 80svw;
+      }
+    }
+  }
+}
+
+/*Estilos para página REGISTRO*/
+
+.mainRegistro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80svh;
+  padding: 60px 15px;
+  font-size: var(--normal);
+  background: linear-gradient(
+      to bottom,
+      var(--color-primario),
+      15%,
+      #ebcea288,
+      90%,
+      var(--color-fondo)
+    ),
+    url(../assets/img/bg-image-registro.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .seccionRegistro {
+    width: 55svw;
+    padding: 30px;
+    border-radius: var(--normal);
+    box-shadow: 0 0 10px var(--color-sombra);
+    backdrop-filter: blur(7px) brightness(85%);
+
+    h2 {
+      font-weight: var(--black);
+      font-size: var(--xxl);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    fieldset {
+      border: 1px solid var(--color-secundario);
+      border-radius: 0.5rem;
+      padding: 15px;
+      margin: 0;
+
+      .mensaje-error {
+        color: var(--color-acento);
+        line-height: 1.4;
+        font-size: var(--small);
+        font-weight: var(--bold);
+        font-feature-settings: "ital";
+        margin-top: -15px;
+        margin-bottom: 15px;
+      }
+
+      .es-invalido {
+        border: 1px solid var(--color-acento) !important;
+        box-shadow: 0 0 10px var(--color-acento);
+      }
+
+      .es-valido {
+        border: 1px solid var(--color-primario) !important;
+        box-shadow: 0 0 10px var(--color-primario);
+      }
+
+      legend {
+        font-weight: var(--bold);
+        font-size: var(--large);
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: inline-block;
+        margin-bottom: 5px;
+        font-weight: var(--bold);
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="date"],
+      select {
+        width: 100%;
+        padding: 10px 20px;
+        margin-bottom: 15px;
+        border-radius: 0.5rem;
+        outline: none;
+        border: 1px solid var(--color-secundario);
+        font-size: var(--normal);
+        font-style: italic;
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 10px var(--color-secundario);
+        }
+      }
+      .registroGenero {
+        margin-bottom: 15px;
+        legend {
+          font-size: var(--normal);
+          margin-bottom: 0px;
+        }
+
+        input[type="radio"] {
+          margin-left: 15px;
+        }
+
+        ul {
+          list-style: none;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          label {
+            font-weight: var(--light);
+            font-style: italic;
+          }
+        }
+      }
+    }
+
+    .terminos {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 1ch;
+      margin: 30px 0px;
+      .terminos-check {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-left: 15px;
+      }
+      input[type="checkbox"] {
+        height: var(--small);
+        margin-right: 1ch;
+      }
+    }
+
+    .botoneraRegistro {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 15px 0px;
+      .botonRegistro,
+      .botonReseteo {
+        width: 35%;
+        box-sizing: content-box;
+        border: 2px solid;
+        padding: 15px;
+        border-radius: 0.5rem;
+        color: var(--color-texto);
+        font-size: var(--normal);
+        font-weight: var(--bold);
+        transition: all 0.3s ease;
+        &:hover,
+        &:focus {
+          background-color: var(--color-fondo);
+          transform: scale(0.97);
+          box-shadow: 0 0 10px var(--color-secundario);
+        }
+      }
+      .botonRegistro {
+        background-color: var(--color-acento);
+      }
+      .botonReseteo {
+        background-color: var(--color-secundario);
+      }
+    }
+
+    .ayuda {
+      margin-top: 30px;
+      a {
+        text-decoration: none;
+        font-style: italic;
+        color: var(--color-secundario);
+      }
+    }
+  }
+}
+
+/*Diseño responsivo para tablets y celulares - Registro*/
+
+@media only screen and (max-width: 768px) {
+  .mainRegistro {
+    background: linear-gradient(
+        to bottom,
+        var(--color-primario),
+        15%,
+        #ebcea288,
+        90%,
+        var(--color-fondo)
+      ),
+      url(../assets/img/bg-image-registro-movil.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .seccionRegistro {
+      width: 90svw;
+
+      h2 {
+        font-size: var(--xl);
+        margin-bottom: var(--large);
+      }
+
+      fieldset {
+        border-radius: 0.35rem;
+
+        legend {
+          font-size: var(--normal);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        select {
+          border-radius: 0.35rem;
+        }
+
+        .registroGenero {
+          ul {
+            flex-flow: column;
+            align-items: start;
+            gap: 1ch;
+          }
+        }
+
+        .botoneraRegistro {
+          flex-flow: column;
+          align-items: center;
+          gap: 15px;
+
+          .botonRegistro,
+          .botonReseteo {
+            min-width: 80%;
+            box-sizing: border-box;
+            border: 2px solid;
+            padding: 15px 0px;
+            border-radius: 0.35rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*Estilos para página INGRESO*/
+
+.mainIngreso {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90svh;
+  padding: 30px 15px;
+  font-size: var(--normal);
+  background: linear-gradient(
+      to bottom,
+      var(--color-primario),
+      15%,
+      #ebcea288,
+      90%,
+      var(--color-fondo)
+    ),
+    url(../assets/img/bg-image-ingreso.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .seccionLogin {
+    min-width: 40svw;
+    padding: 30px;
+    border-radius: var(--normal);
+    box-shadow: 0 0 10px var(--color-sombra);
+    backdrop-filter: blur(7px) brightness(85%);
+
+    animation: animacion-entrada ease-in 1.5s;
+  }
+
+  form {
+    h2 {
+      font-weight: var(--black);
+      font-size: var(--xxl);
+      text-align: center;
+      margin-bottom: var(--xl);
+    }
+
+    .mensaje-error {
+      color: var(--color-acento);
+      font-size: var(--small);
+      font-weight: var(--bold);
+      margin-top: -1ch;
+      margin-bottom: 15px;
+    }
+
+    .es-invalido {
+      border: 1px solid var(--color-acento) !important;
+      box-shadow: 0 0 10px var(--color-acento);
+    }
+
+    .es-valido {
+      border: 1px solid var(--color-primario) !important;
+      box-shadow: 0 0 10px var(--color-primario);
+    }
+
+    fieldset {
+      border: 1px solid var(--color-secundario);
+      border-radius: 0.5rem;
+      padding: 15px;
+      margin: 0;
+
+      legend {
+        font-weight: var(--bold);
+        font-size: var(--large);
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px 20px;
+        margin-bottom: 15px;
+        border-radius: 0.5rem;
+        outline: none;
+        border: 1px solid var(--color-secundario);
+        font-size: var(--normal);
+        font-feature-settings: "ital";
+        font-style: italic;
+        &:hover,
+        &:focus {
+          box-shadow: 0 0 10px var(--color-secundario);
+        }
+      }
+
+      .botonLogin {
+        display: flex;
+        justify-content: center;
+        margin: 15px 0px;
+        .login {
+          width: 50%;
+          box-sizing: content-box;
+          border: 2px solid;
+          padding: 15px;
+          border-radius: 0.5rem;
+          color: var(--color-texto);
+          background-color: var(--color-acento);
+          font-size: var(--normal);
+          font-weight: var(--bold);
+          transition: all 0.3s ease;
+          &:hover,
+          &:focus {
+            background-color: var(--color-fondo);
+            transform: scale(0.97);
+            box-shadow: 0 0 10px var(--color-secundario);
+          }
+        }
+      }
+
+      .ayuda {
+        margin-top: 30px;
+
+        a {
+          font-style: italic;
+          text-decoration: none;
+          color: var(--color-secundario);
+        }
+      }
+    }
+  }
+}
+
+/*Definición de la animación de entrada de elementos*/
+@keyframes animacion-entrada {
+  from {
+    opacity: 0.3;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/*Diseño responsivo para tablets y celulares - Inicio Sesión*/
+
+@media only screen and (max-width: 768px) {
+  .mainIngreso {
+    min-height: 70svh;
+    background: linear-gradient(
+        to bottom,
+        var(--color-primario),
+        15%,
+        #ebcea288,
+        90%,
+        var(--color-fondo)
+      ),
+      url(../assets/img/bg-image-ingreso-movil.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .seccionLogin {
+      max-width: 90svw;
+      margin-top: 30px;
+      form {
+        h2 {
+          font-size: var(--xl);
+          margin-bottom: var(--normal);
+        }
+
+        fieldset {
+          border-radius: 0.35rem;
+
+          legend {
+            font-size: var(--normal);
+          }
+
+          input[type="text"],
+          input[type="email"],
+          input[type="password"] {
+            border-radius: 0.35rem;
+          }
+
+          .botonLogin {
+            flex-flow: column;
+            align-items: center;
+            .login {
+              min-width: 80%;
+              box-sizing: border-box;
+              border: 2px solid;
+              padding: 15px 0px;
+              border-radius: 0.35rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

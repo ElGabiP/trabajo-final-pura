@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es-419">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Página de Registro | Dietética PURA</title>
+    <meta
+      name="description"
+      content="Codo a Codo 4.0 - Curso de PHP - Full Stack - Comisión 24143 - Trabajo Práctico Final - Página de la dietética Pura." />
+    <meta name="author" content="Grupo 1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../css/estilos.css" />
+
+    <meta
+      name="theme-color"
+      content="#96734F"
+      media="(prefers-color-scheme: light)" />
+    <meta
+      name="theme-color"
+      content="#3D2D22"
+      media="(prefers-color-scheme: dark)" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <link rel="icon" sizes="192x192" href="../android-chrome-192x192.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../favicon-16x16.png" />
+    <link rel="manifest" href="../site.webmanifest" />
+
+    <script
+      src="https://kit.fontawesome.com/0b53f15498.js"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navegacion">
+        <a class="anclaLogo" href="../index.html">
+          <i class="fa-solid fa-seedling" aria-hidden="true"></i>
+          <span>PURA</span>
+        </a>
+        <ul class="listaNav">
+          <li class="listaItem">
+            <a class="linkNav" href="../index.html#tendencias">Destacados</a>
+          </li>
+          <li class="listaItem">
+            <a class="linkNav" href="../pages/registrarse.html">Registrarse</a>
+          </li>
+          <li class="listaItem">
+            <a class="linkNav iniciarSesion" href="../pages/iniciosesion.html"
+              >Iniciar Sesión</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="mainRegistro">
+      <section class="seccionRegistro">
+        <h2>Registrate ya</h2>
+        <form id="regForm" action="" method="get" name="registro">
+          <fieldset>
+            <legend>Ingresá tu información personal</legend>
+
+            <div>
+              <input
+                type="text"
+                placeholder="Nombre"
+                id="nombre"
+                name="nombre"
+                class="form-control"
+                required />
+              <div id="nombreError" class="mensaje-error"></div>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Apellido"
+                id="apellido"
+                name="apellido"
+                class="form-control"
+                required />
+              <div id="apellidoError" class="mensaje-error"></div>
+            </div>
+            <div>
+              <input
+                type="email"
+                placeholder="E-mail"
+                id="email"
+                name="email"
+                class="form-control"
+                required />
+              <div id="emailError" class="mensaje-error"></div>
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Elegí una contraseña"
+                id="password"
+                name="password"
+                class="form-control"
+                minlength="6"
+                maxlength="16"
+                required />
+              <div id="passwordError" class="mensaje-error"></div>
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="Repetí tu contraseña"
+                id="password2"
+                name="password2"
+                class="form-control"
+                minlength="6"
+                maxlength="16"
+                required />
+              <div id="password2Error" class="mensaje-error"></div>
+            </div>
+
+            <label for="fechaNacimiento">Fecha de nacimiento: </label>
+            <div>
+              <input
+                type="date"
+                id="fechaNacimiento"
+                name="fechaNacimiento"
+                class="form-control"
+                required />
+              <div id="fechaNacimientoError" class="mensaje-error"></div>
+            </div>
+            <div class="registroGenero">
+              <fieldset>
+                <legend>Género</legend>
+                <ul>
+                  <li>
+                    <label for="masculino">
+                      <input
+                        type="radio"
+                        name="genero"
+                        value="masc"
+                        id="masculino" />
+                      Masculino
+                    </label>
+                  </li>
+                  <li>
+                    <label for="femenino">
+                      <input
+                        type="radio"
+                        name="genero"
+                        value="fem"
+                        id="femenino" />
+                      Femenino
+                    </label>
+                  </li>
+                  <li>
+                    <label for="nobinario">
+                      <input
+                        type="radio"
+                        name="genero"
+                        value="nb"
+                        id="nobinario" />
+                      No binario
+                    </label>
+                  </li>
+                </ul>
+              </fieldset>
+            </div>
+            <div>
+              <select id="provincia" class="form-control" required>
+                <option value="1">BUENOS AIRES</option>
+                <option value="50">C.A.B.A.</option>
+                <option value="2">CATAMARCA</option>
+                <option value="5">CHACO</option>
+                <option value="6">CHUBUT</option>
+                <option value="3">CÓRDOBA</option>
+                <option value="4">CORRIENTES</option>
+                <option value="7">ENTRE RÍOS</option>
+                <option value="8">FORMOSA</option>
+                <option value="9">JUJUY</option>
+                <option value="10">LA PAMPA</option>
+                <option value="11">LA RIOJA</option>
+                <option value="12">MENDOZA</option>
+                <option value="13">MISIONES</option>
+                <option value="14">NEUQUÉN</option>
+                <option value="15">RÍO NEGRO</option>
+                <option value="16">SALTA</option>
+                <option value="17">SAN LUIS</option>
+                <option value="19">SANTA CRUZ</option>
+                <option value="20">SANTA FE</option>
+                <option value="21">SANTIAGO DEL ESTERO</option>
+                <option value="22">TIERRA DEL FUEGO</option>
+                <option disabled selected value="">Provincia</option>
+              </select>
+              <div id="provinciaError" class="mensaje-error"></div>
+            </div>
+            <div class="terminos">
+              <div class="terminos-check">
+                <input
+                  class="check form-control"
+                  type="checkbox"
+                  id="terminos"
+                  required />
+                <label class="terminosCheck" for="terminos"
+                  >Acepto los <a href="#">términos y condiciones</a>.</label
+                >
+              </div>
+              <div id="terminosError" class="mensaje-error"></div>
+            </div>
+
+            <div class="botoneraRegistro">
+              <input class="botonRegistro" type="submit" value="Registrarme" />
+
+              <input class="botonReseteo" type="reset" value="Borrar todo" />
+            </div>
+            <div class="ayuda">
+              <a href="#">Necesito ayuda</a>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Hecha con <i class="fa-solid fa-brain"></i> y
+        <i class="fa-solid fa-heart"></i> por Grupo 1.
+      </p>
+      <nav>
+        <ul>
+          <li><a href="">Quiénes somos</a></li>
+          <li><a href="">Preguntas frecuentes</a></li>
+          <li><a href="">Ayuda</a></li>
+          <li><a href="">Administrador Página</a></li>
+        </ul>
+      </nav>
+      <a href="#main" class="flechaArriba" title="Volver al inicio">
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </footer>
+    <script src="../js/validacion-registro.js"></script>
+  </body>
+</html>
