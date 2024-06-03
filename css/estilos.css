@@ -129,6 +129,7 @@ body {
       flex-direction: column;
       .anclaLogo {
         font-size: var(--xxl);
+        padding-top: 10px;
       }
       .listaNav {
         position: fixed;
@@ -191,20 +192,22 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    .tituloPrincipal {
-      font-size: var(--xxl);
-      font-family: var(--fuente-base);
-      font-weight: var(--bold);
-      letter-spacing: 0.07em;
-      word-spacing: 0.1em;
-      max-width: 15ch;
-      margin-block: var(--xxl) var(--normal);
-    }
-    .subtituloPrincipal {
-      font-size: var(--large);
-      font-weight: var(--black);
-      font-style: italic;
-      margin-bottom: 25px;
+    div {
+      .tituloPrincipal {
+        font-size: var(--xxl);
+        font-family: var(--fuente-base);
+        font-weight: var(--bold);
+        letter-spacing: 0.05em;
+        word-spacing: 0.1em;
+        max-width: 15ch;
+        margin: var(--xl) auto;
+      }
+      .subtituloPrincipal {
+        font-size: var(--large);
+        font-weight: var(--black);
+        font-style: italic;
+        margin-bottom: 25px;
+      }
     }
   }
 
@@ -387,13 +390,14 @@ body {
   .main {
     .seccionPrincipal {
       height: calc(36vh + 12px);
-
-      .tituloPrincipal {
-        font-size: var(--xl);
-      }
-      .subtituloPrincipal {
-        font-size: var(--normal);
-        margin: auto 10px;
+      div {
+        .tituloPrincipal {
+          font-size: var(--xl);
+        }
+        .subtituloPrincipal {
+          font-size: var(--normal);
+          margin: auto 10px;
+        }
       }
     }
     .buscadorPrincipal {
