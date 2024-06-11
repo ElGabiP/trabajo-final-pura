@@ -21,7 +21,7 @@ CREATE TABLE productos (
   PRIMARY KEY (id_producto),
   FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
---Insertar datos en la tabla categorias
+-- Insertar datos en la tabla categorias
 INSERT INTO categorias (nombre, descripcion)
 VALUES (
     'Frutos Secos',
