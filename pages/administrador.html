@@ -78,12 +78,12 @@
         </ul>
       </nav>
     </header>
-    <main id="mainDetalle" class="mainDetalle">
+    <main class="mainDetalle">
       <section class="container mt-4 mb-5">
         <h1>Gestor de productos</h1>
-        <p>
-          En esta sección se podra llevar a cabo la gestión de los productos del
-          portal
+        <p class="lead">
+          En esta sección se podrá llevar a cabo la gestión de los productos de
+          la página.
         </p>
         <!-- Formulario para dar de alta un producto nuevo-->
 
@@ -92,40 +92,52 @@
           method="post"
           enctype="multipart/form-data"
           class="row row-cols-lg-auto g-3 align-items-center">
-          <div class="col-12 col-md-4">
-            <label for="titulo">Categoría</label>
-            <input
-              class="form-control"
-              type="text"
-              name="categora"
-              id="categoria" />
+          <div class="col-12 col-md-2">
+            <label for="categoria">Categoría</label>
+            <select class="form-select" id="categoria">
+              <option selected disabled>Elige el tipo de producto</option>
+              <option value="1">Frutos Secos</option>
+              <option value="2">Semillas</option>
+              <option value="3">Snacks</option>
+              <option value="4">Harinas</option>
+              <option value="5">Aceites</option>
+              <option value="6">Infusiones</option>
+              <option value="7">Endulzantes</option>
+              <option value="8">Bebidas</option>
+            </select>
           </div>
-          <div class="col-4 col-md-3">
-            <label for="fecha">Nombre</label>
+          <div class="col-5 col-md-6">
+            <label for="nombre">Nombre</label>
             <input class="form-control" type="text" name="nombre" id="nombre" />
           </div>
-          <div class="col-6 col-md-3">
-            <label for="genero">Disponibilidad</label>
+          <div class="col-3 col-md-2">
+            <label for="precio">Precio</label>
             <input
               class="form-control"
-              type="text"
-              name="disponibilidad"
-              id="disponibilidad" />
+              type="number"
+              name="precio"
+              id="precio"
+              placeholder="$" />
           </div>
-          <div class="col-2 col-md-2">
-            <label for="duracion">Precio</label>
-            <input class="form-control" type="text" name="precio" id="precio" />
+          <div class="col-auto form-check">
+            <label class="form-check-label" for="en_stock">En stock</label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="en_stock"
+              checked />
           </div>
           <div class="col-12">
-            <label for="sinopsis">Descripción</label>
+            <label for="descripcion">Descripción</label>
             <textarea
               class="form-control"
-              name="sinopsis"
-              id="sinopsis"
+              name="descripcion"
+              id="descripcion"
               cols="30"
               rows="3"></textarea>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-8">
             <label for="imagen">Imagen</label>
             <input class="form-control" type="file" name="imagen" id="imagen" />
           </div>
@@ -142,12 +154,13 @@
       <section class="container mt-5 mb-5 overflow-auto">
         <h2>Listado de Productos</h2>
         <p class="small">
-          Para ver todos los datos de los productos, elija uno y toque modificar
+          Para ver todos los datos de los productos, elija uno y presione
+          modificar.
         </p>
         <table class="table table-dark table-striped">
           <thead>
             <tr>
-              <th>Categoria</th>
+              <th>Categoría</th>
               <th>Nombre</th>
               <th>Imagen</th>
               <th>Acciones</th>
@@ -165,9 +178,9 @@
                   alt="almendras peladas" />
               </td>
               <td>
-                <button class="btn btn-warning">Modificar</button>
+                <button class="btn btn-warning my-2 mx-1">Modificar</button>
 
-                <button class="btn btn-danger">Eliminar</button>
+                <button class="btn btn-danger my-2 mx-1">Eliminar</button>
               </td>
             </tr>
           </tbody>
@@ -187,9 +200,7 @@
             <a class="linkNav" href="../index.html">Ayuda</a>
           </li>
           <li class="listaItem">
-            <a
-              class="linkNav administradorPeliculas"
-              href="../pages/administrador.html"
+            <a class="linkNav administradorPeliculas" href=""
               >Administrador Peliculas</a
             >
           </li>
