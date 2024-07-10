@@ -5,10 +5,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const opcionesGet = {
     method: "GET",
   };
-  const respuesta = await fetch(
-    "https://api-php-pura-2024.000webhostapp.com/productos", //cambiar la url a la correspondiente del localhost
-    opcionesGet
-  );
+  const urlApiWebhost = "https://api-php-pura-2024.000webhostapp.com/productos";
+  const urlApi = "http://localhost:8080/pura/productos"; //cambiar la url a la correspondiente del localhost
+  const respuesta = await fetch(urlApi, opcionesGet);
   const datos = await respuesta.json();
   // Extraemos los productos de la respuesta
   const productos = datos;
@@ -94,7 +93,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   //código para mostrar una imagen por defecto si la solicitada no existe
-
   const imagenesTabla = tbody.querySelectorAll("img");
   let imagenDefault = "../assets/img/productos/default.jpg";
   imagenesTabla.forEach((imagen) => {
@@ -127,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       descripcion === "" ||
       imagen === ""
     ) {
-      alert("Todos los campos son obligatorios");
+      mostrarError("Todos los campos son obligatorios.");
       return;
     }
     // levanto solo el nombre del file para enviarlo a la api
@@ -150,21 +148,39 @@ document.addEventListener("DOMContentLoaded", async () => {
       }),
     };
     //realizo la peticion fetch a la api para agregar un producto
-    const response = await fetch(
-      "https://api-php-pura-2024.000webhostapp.com/productos", //cambiar la url a la correspondiente del localhost
-      opcionesPost
-    );
-    //obtengo la respuesta
+    const response = await fetch(urlApi, opcionesPost);
+    //obtenemos la respuesta
     const data = await response.json();
     //si la respuesta es correcta, muestro un mensaje de exito y limpio los inputs del formulario
-    // si el codigo es 201, la pelicula se agrego correctamente
     if (response.status === 201) {
-      alert("Producto agregado correctamente");
-      formProducto.reset();
-      // que se recargue la pagina para ver la pelicula agregada
-      location.reload();
+      mostrarExito();
     } else {
-      alert("Error al agregar producto.");
+      mostrarError("Error al agregar producto.");
     }
   });
 });
+
+const mostrarExito = () => {
+  Swal.fire({
+    position: "top",
+    icon: "success",
+    title: "¡Producto agregado!",
+    confirmButtonColor: "#6b4626",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      formProducto.reset();
+      location.reload();
+    }
+  });
+};
+
+const mostrarError = (mensaje) => {
+  Swal.fire({
+    position: "top",
+    icon: "error",
+    title: "Oops...",
+    text: mensaje,
+    confirmButtonColor: "#be5252",
+    timer: 3100,
+  });
+};
