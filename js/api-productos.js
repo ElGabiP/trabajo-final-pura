@@ -1,3 +1,6 @@
+const urlApiWebhost = "https://api-php-pura-2024.000webhostapp.com/productos";
+const urlApi = "http://localhost:80/php_dietetica_pura/productos"; //cambiar la url a la correspondiente del localhost
+
 document.addEventListener("DOMContentLoaded", async () => {
   // realizamos una peticion fetch a esta api para obtener todos los productos de la base de datos:
   // configuracion de options, es un get y no necesita body
@@ -5,13 +8,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const opcionesGet = {
     method: "GET",
   };
-  const urlApiWebhost = "https://api-php-pura-2024.000webhostapp.com/productos";
-  const urlApi = "http://localhost:8080/pura/productos"; //cambiar la url a la correspondiente del localhost
+
   const respuesta = await fetch(urlApi, opcionesGet);
   const datos = await respuesta.json();
   // Extraemos los productos de la respuesta
   const productos = datos;
-
   //obtenemos el tbody de la tabla
   const tbody = document.getElementById("bodyTablaProductos");
 
@@ -76,9 +77,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //creamos un td para los botones
     const tdBotones = document.createElement("td");
-    let botonera = `  
-                <button class="btn btn-warning my-2 mx-1">Modificar</button>
-                <button class="btn btn-danger my-2 mx-1">Eliminar</button>
+    let botonera = `
+                    <button class="btn btn-warning my-2 mx-1" onclick="editarProducto(${producto.id_producto})">Modificar</button>
+                    <button class="btn btn-danger my-2 mx-1" onclick="eliminarProducto(${producto.id_producto})">Eliminar</button>
                 `;
     tdBotones.innerHTML = botonera;
 
@@ -147,6 +148,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         id_categoria: idCategoria,
       }),
     };
+
     //realizo la peticion fetch a la api para agregar un producto
     const response = await fetch(urlApi, opcionesPost);
     //obtenemos la respuesta
@@ -158,7 +160,115 @@ document.addEventListener("DOMContentLoaded", async () => {
       mostrarError("Error al agregar producto.");
     }
   });
-});
+})
+
+
+// Función para eliminar un producto
+const eliminarProducto = async (idProducto) => {
+  const opcionesDelete = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id_producto: idProducto,
+    }),
+  };
+  const response = await fetch(urlApi, opcionesDelete);
+  const data = await response.json();
+
+  if (response.status === 200) {
+    Swal.fire({
+      position: "top",
+      icon: "success",
+      title: "¡Producto eliminado!",
+      confirmButtonColor: "#6b4626",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.reload();
+      }
+    });
+  } else {
+    mostrarError("Error al eliminar producto.");
+  }
+};
+
+
+// Función para editar un producto
+const editarProducto = async (idProducto) => {
+  // Primero obtenemos los datos del producto desde la API
+  const response = await fetch(`${urlApi}/${idProducto}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    const producto = await response.json();
+
+    // Ahora mostramos el modal con los datos del producto cargados
+    Swal.fire({
+      title: 'Editar Producto',
+      html: `<input type="text" id="nombre" class="swal2-input" placeholder="Nombre" value="${producto.nombre}">
+             <input type="number" id="en_stock" class="swal2-input" placeholder="Stock" value="${producto.en_stock}">
+             <input type="number" id="precio" class="swal2-input" placeholder="Precio" value="${producto.precio}">
+             <input type="text" id="descripcion" class="swal2-input" placeholder="Descripción" value="${producto.descripcion}">
+             <input type="text" id="imagen" class="swal2-input" placeholder="Imagen" value="${producto.imagen}">
+             <input type="number" id="categoria" class="swal2-input" placeholder="ID Categoría" value="${producto.id_categoria}">`,
+      focusConfirm: false,
+      preConfirm: () => {
+        const nombre = document.getElementById('nombre').value;
+        const enStock = document.getElementById('en_stock').value;
+        const precio = document.getElementById('precio').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const imagen = document.getElementById('imagen').value;
+        const idCategoria = document.getElementById('categoria').value;
+
+        return {
+          nombre: nombre,
+          en_stock: enStock,
+          precio: precio,
+          descripcion: descripcion,
+          imagen: imagen,
+          id_categoria: idCategoria,
+          id_producto: idProducto
+        };
+      }
+    }).then(async (result) => {
+      if (result.value) {
+        const productoEditado = result.value;
+
+        const opcionesPut = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productoEditado),
+        };
+
+        const response = await fetch(`${urlApi}/${idProducto}`, opcionesPut);
+
+        if (response.ok) {
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "¡Producto editado!",
+            confirmButtonColor: "#6b4626",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.reload();
+            }
+          });
+        } else {
+          mostrarError("Error al editar producto.");
+        }
+      }
+    });
+  } else {
+    mostrarError("Error al obtener datos del producto.");
+  }
+};
 
 const mostrarExito = () => {
   Swal.fire({
