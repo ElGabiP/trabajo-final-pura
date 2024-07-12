@@ -210,11 +210,11 @@ const editarProducto = async (idProducto) => {
     Swal.fire({
       title: "Editar Producto",
       html: `<input type="text" id="nombreEditado" class="swal2-input" placeholder="Nombre" value="${productoUnico.nombre}">
-             <input type="number" id="en_stockEditado" class="swal2-input" placeholder="Stock" value="${productoUnico.en_stock}">
+             <div><label for="stock">En Stock</label><input type="number" id="en_stockEditado" name="stock" class="swal2-input" placeholder="Stock" min="0" max="1" value="${productoUnico.en_stock}"></div>
              <input type="number" id="precioEditado" class="swal2-input" placeholder="Precio" value="${productoUnico.precio}">
              <input type="text" id="descripcionEditada" class="swal2-input" placeholder="Descripción" value="${productoUnico.descripcion}">
              <input type="text" id="imagenEditada" class="swal2-input" placeholder="Imagen" value="${productoUnico.imagen}">
-             <input type="number" id="categoriaEditada" class="swal2-input" placeholder="ID Categoría" value="${productoUnico.id_categoria}">`,
+             <div><label for="categoria">Categoría</label><input type="number" id="categoriaEditada" name="categoria" class="swal2-input" placeholder="ID Categoría" min="1" max="8" value="${productoUnico.id_categoria}"></div>`,
       focusConfirm: false,
       preConfirm: () => {
         const nombre = document.getElementById("nombreEditado").value;
